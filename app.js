@@ -1,13 +1,69 @@
-$(document).ready(function(){
-	var long;
-	var lat;
-	if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(function(position) {
-    long = position.coords.latitude;
-    lat = position.coords.longitude;
-    $("#data").html("latitude: " + lat + "<br>longitude: " + long);
+$( document ).ready(function(){
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      var lat = "lat=" + position.coords.latitude;
+      var lon = "lon=" + position.coords.longitude;
+      getWeather(lat, lon);
+    });
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
+
+  $("#tempunit").click(function () {
+    var currentTempUnit = $("#tempunit").text();
+    var newTempUnit = currentTempUnit == "C" ? "F" : "C";
+    $("#tempunit").text(newTempUnit);
+    if (newTempUnit == "F") {
+      var fahTemp = Math.round(parseInt($("#temp").text()) * 9 / 5 + 32);
+      $("#temp").text(fahTemp + " " + String.fromCharCode(176));
+    } else {
+      $("#temp").text(currentTempInCelsius + " " + String.fromCharCode(176));
+    }
+  });
+  
+})
+
+function getWeather(lat, lon) {
+  var urlString = api + lat + "&" + lon;
+  $.ajax({
+    url: urlString, success: function (result) {
+      $("#city").text(result.name + ", ");
+      $("#country").text(result.sys.country);
+      currentTempInCelsius = Math.round(result.main.temp * 10) / 10;
+      $("#temp").text(currentTempInCelsius + " " + String.fromCharCode(176));
+      $("#tempunit").text(tempUnit);
+      $("#desc").text(result.weather[0].main);
+      IconGen(result.weather[0].main);
+    }
   });
 }
-//create api with geolocal
-var api ="http://samples.openweathermap.org/data/2.5/weather?lat='+lat+'&lon=''&appid=b6907d289e10d714a6e88b30761fae22";
-//$.getJSON(api,function(data){})//
+
+function IconGen(desc) {
+  var desc = desc.toLowerCase()
+  switch (desc) {
+    case 'drizzle':
+      addIcon(desc)
+      break;
+    case 'clouds':
+      addIcon(desc)
+      break;
+    case 'rain':
+      addIcon(desc)
+      break;
+    case 'snow':
+      addIcon(desc)
+      break;
+    case 'clear':
+      addIcon(desc)
+      break;
+    case 'thunderstom':
+      addIcon(desc)
+      break;
+    default:
+      $('div.clouds').removeClass('hide');
+  }
+}
+
+function addIcon(desc) {
+  $('div.' + desc).removeClass('hide');
+}
