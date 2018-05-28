@@ -67,3 +67,4 @@ function IconGen(desc) {
 function addIcon(desc) {
   $('div.' + desc).removeClass('hide');
 }
+//
