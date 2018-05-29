@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
   
-    <head>
+  <head>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <link href="styles/main.css" rel="stylesheet" type="text/css">
 </head>
         <body  ng-app="weatherApp" ng-controller="weatherCtrl"ng-style="weatherBackground" >
-<div class="text-center">
-  <h1>Show the Local Weather</h1>
-  <h3>Front End Developer Project</h3>
-<ul class ="list-unstyled">
-  <li class ="btn btn-default" id="city"></li>
-  <li class ="btn btn-default" id = "weatherType"></li>
-  <li class ="btn btn-default" id="fTemp"></li>
-  <li class ="btn btn-default" id = "windSpeed"></li>
+<center><div style="color: pink;" class="text-center">
+  <h1> Local Weather</h1>
+  
+<ul class ="list-group">
+  <li style="color: pink;"class="list-group-item list-group-item-success" id="city"></li>
+  <li style="color: pink;"class="list-group-item list-group-item-success" id = "weatherType"></li>
+  <li style="color: pink;" class="list-group-item list-group-item-success" id="fTemp"></li>
+  <li style="color: pink;" class="list-group-item list-group-item-success" id = "windSpeed"></li>
 </ul>
-</div>
-<scrip src="scripts/app.js"></scrip>
+</div></center>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="app.js" type="application/javascript"></script>
 </body>
 
 </html>
