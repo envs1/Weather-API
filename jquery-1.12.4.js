@@ -12,10 +12,6 @@
  * Date: 2016-05-20T17:17Z
  */
 
-$(document).ready(function)({
-	
-	var api = "http://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=b6907d289e10d714a6e88b30761fae22"
-});
 (function( global, factory ) {
 
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
@@ -258,7 +254,7 @@ jQuery.extend( {
 	},
 
 	noop: function() {},
-
+//
 	// See test/unit/core.js for details concerning isFunction.
 	// Since version 1.3, DOM methods and functions like alert
 	// aren't supported. They return false on IE (#2968).
